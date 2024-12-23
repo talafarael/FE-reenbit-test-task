@@ -1,9 +1,11 @@
 import { useVerifyCodeAndCreateUserMutation } from "api/authApi/useVerifyCodeAndCreateUser";
 import ButtonSubmit from "Atoms/ButtonSubmit";
+import { useNavHook } from "hook/useNavigation";
 import { Controller, useForm } from "react-hook-form";
 import { ICode } from "type/ICode";
 
 export default function CodeInput() {
+  const navigateTo = useNavHook();
   const {
     mutate: verifyCodeAndCreateUser,
     isLoading,
@@ -21,14 +23,15 @@ export default function CodeInput() {
       console.error("Temporary JWT not found");
       return;
     }
-
     const body = {
       code: data,
       jwt: jwt,
     };
     verifyCodeAndCreateUser(body, {
-      onSuccess: () => {
-        console.log("User created successfully!");
+      onSuccess: (res) => {
+        localStorage.setItem("token", res.token);
+        localStorage.removeItem("temporaryJwt");
+        navigateTo("/");
       },
       onError: () => {
         console.error("Error creating user:");
@@ -44,9 +47,21 @@ export default function CodeInput() {
         rules={{
           required: "Email is required",
           minLength: { value: 4, message: "Minimum 4 characters" },
+          maxLength: { value: 4, message: "Max 4 characters" },
         }}
-        render={({ field: { onChange, onBlur, value, ref } }) => (
-          <input onChange={onChange} onBlur={onBlur} value={value} ref={ref} />
+        render={({
+          field: { onChange, onBlur, value, ref },
+          fieldState: { error },
+        }) => (
+          <>
+            <input
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              ref={ref}
+            />
+            <div>{error && <p>{error.message}</p>}</div>
+          </>
         )}
       />
       <ButtonSubmit />

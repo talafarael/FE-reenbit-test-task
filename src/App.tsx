@@ -3,7 +3,7 @@ import { Router } from "Router";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App flex-center">
       <Router />
     </div>
   );
