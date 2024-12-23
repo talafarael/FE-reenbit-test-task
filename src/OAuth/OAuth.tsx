@@ -4,18 +4,16 @@ import axios from "axios";
 export const OAuth2Login = () => {
   const [user, setUser] = useState(null);
 
-  // Перенаправление пользователя на аутентификацию через Google
   const handleLogin = () => {
     window.location.href = "http://localhost:5000/oauth/auth/google";
   };
 
-  // Проверка авторизации
   const fetchUser = async () => {
     try {
       const response = await axios.get(
         "http://localhost:5000/oauth/protected",
         {
-          withCredentials: true, // Для передачи cookie
+          withCredentials: true,
         }
       );
       setUser(response.data);
@@ -25,7 +23,6 @@ export const OAuth2Login = () => {
     }
   };
 
-  // Логаут пользователя
   const handleLogout = async () => {
     try {
       await axios.get("http://localhost:5000/oauth/logout", {
