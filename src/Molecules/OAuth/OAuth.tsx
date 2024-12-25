@@ -8,49 +8,7 @@ export const OAuth2Login = () => {
     window.location.href = "http://localhost:5000/oauth/auth/google";
   };
 
-  const fetchUser = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5000/oauth/protected",
-        {
-          withCredentials: true,
-        }
-      );
-      setUser(response.data);
-    } catch (error) {
-      console.error("Ошибка при получении пользователя:", error);
-      alert("Вы не авторизованы.");
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await axios.get("http://localhost:5000/oauth/logout", {
-        withCredentials: true,
-      });
-      setUser(null);
-      alert("Вы успешно вышли из системы.");
-    } catch (error) {
-      console.error("Ошибка при выходе из системы:", error);
-    }
-  };
-
-  return (
-    <div>
-      {!user ? (
-        <div>
-          <h1>OAuth2 Авторизация</h1>
-          <button onClick={handleLogin}>Войти через Google</button>
-        </div>
-      ) : (
-        <div>
-          <h1>Добро пожаловать, {user}</h1>
-          <button onClick={handleLogout}>Выйти</button>
-        </div>
-      )}
-      <button onClick={fetchUser}>Проверить авторизацию</button>
-    </div>
-  );
+  return <button onClick={handleLogin}>sign in from google</button>;
 };
 
 export default OAuth2Login;

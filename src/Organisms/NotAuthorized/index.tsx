@@ -2,7 +2,8 @@ import { useNavHook } from "hook/useNavigation";
 import "./notAuthorized.css";
 import Button from "Atoms/Button";
 import { useEffect } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import OAuth2Login from "Molecules/OAuth/OAuth";
 
 export default function NotAuthorized() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function NotAuthorized() {
           func={() => handlerNav(elem.path)}
         />
       ))}
+      <OAuth2Login />
     </div>
   );
 }

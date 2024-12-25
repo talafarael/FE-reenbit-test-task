@@ -6,6 +6,7 @@ import { IRegister } from "type/IRegister";
 import ButtonSubmit from "Atoms/ButtonSubmit";
 import { useMutationRegister } from "api/authApi/useMutationRegister";
 import { useNavigate } from "react-router-dom";
+import OAuth2Login from "Molecules/OAuth/OAuth";
 
 export default function RegisterInput() {
   const { mutate: register, isLoading, isError, data } = useMutationRegister();
@@ -50,6 +51,7 @@ export default function RegisterInput() {
           )}
         />
       ))}
+      <OAuth2Login />
       <ButtonSubmit />
     </form>
   );

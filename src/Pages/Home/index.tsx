@@ -12,5 +12,5 @@ export default function Home() {
     console.log(data);
     addUser(data.user);
   }, [data]);
-  return <div>{user?.email}</div>;
+  return <div></div>;
 }

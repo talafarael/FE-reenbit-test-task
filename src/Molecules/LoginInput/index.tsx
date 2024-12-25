@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { dataLoginInput } from "./LoginInput.data";
 import { ILogin } from "type/ILogin";
 import { useMutationLogin } from "api/authApi/useQueryLogin";
+import OAuth2Login from "Molecules/OAuth/OAuth";
 
 export default function LoginInput() {
   const navigate = useNavigate();
@@ -24,7 +25,6 @@ export default function LoginInput() {
     login(body, {
       onSuccess: (data) => {
         localStorage.setItem("token", data.token);
-        
       },
     });
   };
@@ -44,6 +44,7 @@ export default function LoginInput() {
           )}
         />
       ))}
+      <OAuth2Login />
       <ButtonSubmit />
     </form>
   );

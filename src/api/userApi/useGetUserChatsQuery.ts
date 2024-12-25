@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { IUser } from "type/IUser";
+import { IChat } from "type/IChat";
 
 const useGetUserChats = async (token: string) => {
   const response = await axios.get(
@@ -10,7 +10,7 @@ const useGetUserChats = async (token: string) => {
 };
 
 export const useGetUserChatsQuery = (token: string) => {
-  return useQuery("get-user-chats", () => useGetUserChats(token), {
+  return useQuery<IChat[]>("get-user-chats", () => useGetUserChats(token), {
     enabled: !!token,
     retry: false,
   });
