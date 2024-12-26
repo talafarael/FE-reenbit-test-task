@@ -2,6 +2,8 @@
   width: 100vw;
   background: rgb(206, 189, 189, 0.5);
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .flex-center {
   display: flex;
