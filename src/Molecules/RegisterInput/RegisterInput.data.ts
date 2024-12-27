@@ -1,4 +1,6 @@
-export const dataRegisterInput: IDataInputRegister[] = [
+import { IDataInput } from "type/IDataInput";
+
+export const dataRegisterInput: IDataInput<EnumReg>[] = [
   {
     name: "name",
     rules: {
@@ -27,9 +29,5 @@ export const dataRegisterInput: IDataInputRegister[] = [
     placholderText: "Write password",
   },
 ];
+type EnumReg = "name" | "email" | "password";
 
-export interface IDataInputRegister {
-  name: "name" | "email" | "password";
-  rules: any;
-  placholderText: string;
-}

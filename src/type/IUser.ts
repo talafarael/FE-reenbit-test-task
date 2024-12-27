@@ -3,4 +3,5 @@ export interface IUser {
   password: string;
   typeLogin: string;
   chatId: string[];
+  id: string;
 }

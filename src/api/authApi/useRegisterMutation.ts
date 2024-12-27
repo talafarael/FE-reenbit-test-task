@@ -5,7 +5,7 @@ import { IRegister } from "type/IRegister";
 export const useRegister = async (body: IRegister) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/auth/register",
+      `${process.env.REACT_APP_API_KEY}/auth/register`,
       body
     );
     return response.data;

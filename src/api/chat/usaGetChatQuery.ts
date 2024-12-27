@@ -1,19 +1,31 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import { IChat } from "type/IChat";
 import { IUser } from "type/IUser";
 
-const useGetUser = async (token: string) => {
+const useGetChat = async (token: string | null, chatId: string | null) => {
+  if (!token || !chatId) {console.log("null")
+    return null;
+  }
+
   const response = await axios.get(
-    `http://localhost:5000/user/getuser?token=${token}`
+    `${process.env.REACT_APP_API_KEY}/chat/getchat?token=${token}&chatId=${chatId}`
   );
   return response.data;
 };
-interface IGetUser {
-  user: IUser;
+interface IGetChat {
+  chat: IChat;
 }
-export const useGetUserQuery = (token: string) => {
-  return useQuery<IGetUser>("get-user", () => useGetUser(token), {
-    enabled: !!token,
-    retry: false,
-  });
+export const useGetChatQuery = (
+  token: string | null,
+  chatId: string | null
+) => {
+  return useQuery<IGetChat>(
+    ["get-chat", token, chatId],
+    () => useGetChat(token, chatId),
+    {
+      enabled: !!token && !!chatId,
+      retry: false,
+    }
+  );
 };

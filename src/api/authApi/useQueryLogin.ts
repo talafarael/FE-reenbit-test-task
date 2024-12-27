@@ -5,7 +5,7 @@ import { IToken } from "type/IToken";
 
 export const useLogin = (body: ILogin): Promise<IToken> => {
   return axios
-    .post<IToken>("http://localhost:5000/auth/login", body)
+    .post<IToken>(`${process.env.REACT_APP_API_KEY}/auth/login`, body)
     .then((res) => {
       console.log(res)
       return res.data;

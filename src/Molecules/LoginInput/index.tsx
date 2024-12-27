@@ -3,10 +3,10 @@ import InputRegister from "Atoms/InputRegister";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { dataLoginInput } from "./LoginInput.data";
 import { ILogin } from "type/ILogin";
 import { useMutationLogin } from "api/authApi/useQueryLogin";
 import OAuth2Login from "Molecules/OAuth/OAuth";
+import { dataLoginInput } from "./loginInput.data";
 
 export default function LoginInput() {
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ export default function LoginInput() {
     login(body, {
       onSuccess: (data) => {
         localStorage.setItem("token", data.token);
+        navigate("/");
       },
     });
   };

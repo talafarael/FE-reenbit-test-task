@@ -1,4 +1,6 @@
-export const dataLoginInput: IDataInputLogin[] = [
+import { IDataInput } from "type/IDataInput";
+
+export const dataLoginInput: IDataInput<EnumLogin>[] = [
   {
     name: "email",
     rules: {
@@ -19,9 +21,9 @@ export const dataLoginInput: IDataInputLogin[] = [
     placholderText: "Write password",
   },
 ];
+type EnumLogin="email" | "password"
 
-export interface IDataInputLogin {
-  name: "email" | "password";
-  rules: any;
-  placholderText: string;
-}
+
+
+
+

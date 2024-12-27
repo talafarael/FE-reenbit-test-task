@@ -1,11 +1,5 @@
 export interface IChat {
-  chat: [
-    {
-      message: string;
-      idUser: string;
-      time: string;
-    }
-  ];
+  chat: IMessageData[];
   botFirstName: string;
   botLastName: string;
   id: string;
@@ -13,4 +7,10 @@ export interface IChat {
 }
 export interface IChatsMenu {
   chatsMenuData: IChat[];
+}
+export interface IMessageData {
+  message: string;
+  idUser: string;
+  time: string;
+  _id: string;
 }

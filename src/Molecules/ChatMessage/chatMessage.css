@@ -1,0 +1,10 @@
+.chatMessage {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  z-index: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  pointer-events: auto;
+  scroll-behavior: smooth;
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { dataRegisterInput, IDataInputRegister } from "./RegisterInput.data";
+import { dataRegisterInput } from "./registerInput.data";
 import InputRegister from "Atoms/InputRegister";
 import { IRegister } from "type/IRegister";
 import ButtonSubmit from "Atoms/ButtonSubmit";
-import { useMutationRegister } from "api/authApi/useMutationRegister";
+import { useMutationRegister } from "api/authApi/useRegisterMutation";
 import { useNavigate } from "react-router-dom";
 import OAuth2Login from "Molecules/OAuth/OAuth";
 

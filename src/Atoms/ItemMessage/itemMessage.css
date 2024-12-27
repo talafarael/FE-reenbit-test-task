@@ -1,0 +1,17 @@
+.botMessage {
+}
+.size-message {
+  width: max-content;
+  height: auto;
+  padding: 5px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+.YourContainerMessage {
+  display: flex;
+  align-items: flex-end;
+  width: 90%;
+  justify-content: end;
+}

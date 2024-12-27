@@ -5,7 +5,7 @@ import { ICode } from "type/ICode";
 export const useVerifyCodeAndCreateUser = async (code: ICode, jwt: string) => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/auth/verifycodeandcreateuser?token=${jwt}`,
+      `${process.env.REACT_APP_API_KEY}/auth/verifycodeandcreateuser?token=${jwt}`,
       code
     );
     return response.data;

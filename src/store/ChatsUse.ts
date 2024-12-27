@@ -1,4 +1,3 @@
-import { IUser } from "type/IUser";
 import { create } from "zustand";
 
 interface IChatUserSore {

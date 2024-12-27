@@ -4,7 +4,7 @@ import { IUser } from "type/IUser";
 
 const useGetUser = async (token: string) => {
   const response = await axios.get(
-    `http://localhost:5000/user/getuser?token=${token}`
+    `${process.env.REACT_APP_API_KEY}/user/getuser?token=${token}`
   );
   return response.data;
 };

@@ -1,3 +1,4 @@
+import CreateChat from "Molecules/CreateChat";
 import Code from "Pages/Code";
 import Home from "Pages/Home";
 import Login from "Pages/Login";
@@ -11,8 +12,12 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true,
+        path: "/",
         element: <Home />,
+      },
+      {
+        path: "/createchat",
+        element: <CreateChat />,
       },
     ],
   },

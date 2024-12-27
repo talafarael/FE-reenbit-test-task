@@ -2,10 +2,12 @@ import { useGetUserQuery } from "api/userApi/useGetUserQuery";
 import "./home.css";
 import React, { useEffect } from "react";
 import { useUserStore } from "store/User";
-import Header from "Organisms/Header";
+import { useChatUseStore } from "store/ChatsUse";
+import Chat from "Organisms/Chat";
 export default function Home() {
   const token = localStorage.getItem("token");
-  const { addUser, user } = useUserStore()
+  const { addUser } = useUserStore();
+  const { id } = useChatUseStore();
 
   const { data, error, isLoading } = useGetUserQuery(token!);
   useEffect(() => {
@@ -15,10 +17,5 @@ export default function Home() {
     addUser(data.user);
   }, [data]);
 
-  return (
-    <div className="home">
-      <Header />
-
-    </div>
-  );
+  return <div className="home">{id ? <Chat /> : null}</div>;
 }

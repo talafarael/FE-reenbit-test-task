@@ -1,4 +1,3 @@
-import Header from "Organisms/Header";
 import MenuChats from "Organisms/MenuChats";
 import NotAuthorized from "Organisms/NotAuthorized";
 import { Outlet } from "react-router-dom";
